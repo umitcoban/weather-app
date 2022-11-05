@@ -1,0 +1,101 @@
+body{
+  background-image: linear-gradient(to left, #F6E7D8,  #FCFFE7) ,url("https://www.transparenttextures.com/patterns/redox-02.png");
+
+}
+.App {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  background:linear-gradient(30deg,#25316D,  #97D2EC);
+  height:max-content;
+  width: 80%;
+  margin: 1% auto;
+  border-radius: 2%;
+}
+
+/* Main content */
+.main-content{
+  justify-content: center;
+  background-color: rgba(0,0,0,0.1);
+  width: 85%;
+  margin: 5% auto;
+  border-end-start-radius: 5%;
+  border-bottom-right-radius: 5%;
+  border-top-right-radius: 2%;
+  border-top-left-radius: 2%;
+}
+
+/* search form */
+
+.search-form{
+  color: #FCFFE7;
+  text-align: center;
+}
+
+.city-search-input{
+  text-align: center;
+  margin: 2% auto;
+  padding: auto;
+  color: white;
+}
+
+/* Local Date */
+
+.local-date-group{
+  margin: auto;
+  width: 100%;
+  color:#FFDDD2;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+
+}
+
+/* city header */
+
+.city-header{
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 3rem;
+  color:#EAEAEA;
+  letter-spacing: 3px;
+}
+
+/* weather panel */
+.weather-panel{
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.weather-main{
+  color:#47B5FF;
+  display: block;
+  width: 100%;
+  margin: auto;
+}
+
+.weather-info{
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+}
+
+.degree{
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  font-weight: 800;
+  display: flex;
+  color: #FFF5E4;
+  font-size: 2.5rem;
+  margin: 1% auto 4% auto;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.current-weather-logo{
+  width: 20%;
+  margin: 5% auto;
+}

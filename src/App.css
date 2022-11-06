@@ -74,6 +74,7 @@ body{
   display: block;
   width: 100%;
   margin: auto;
+  font-size: 3rem;
 }
 
 .weather-info{
@@ -96,6 +97,34 @@ body{
 }
 
 .current-weather-logo{
-  width: 20%;
-  margin: 5% auto;
+  width: 35%;
+  margin: 1% auto;
+}
+
+.weather-info-alt-header{
+  display: block;
+  color: #FFF5E4;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.weather-info-alt-header{
+  display: block;
+  color: #FFDDD2;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.line{
+  border: #FCFFE7 2px dotted;
+  border-radius: 50%;
+  width: 50%;
+  margin: 2% auto;
+}
+
+.weather-alt-info{
+  text-align: center;
+  color: #FFF5E4;
+  font-weight: 600;
+  font-size: 1.2rem;
 }

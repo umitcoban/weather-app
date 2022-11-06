@@ -22,7 +22,7 @@ function App() {
 
   const [weatherLogo, setWeatherLogo] = useState("");
 
-  const [isError, setIsError] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   const getWeatherApiInfo = async (cityName) => {
     try {
@@ -35,13 +35,16 @@ function App() {
           setWeatherLogo("http://openweathermap.org/img/wn/" + result.weather[0].icon + "@2x.png");
           setTimeout(() => setLoadedData(true), 1500);
           setIsError(false);
+          console.log(weatherApiData);
         } else {
+          notify();
           setIsError(true);
           setLoadedData(false);
         }
       })
     } catch (error) {
-
+      notify();
+      setIsError(true);
     }
   }
 
@@ -69,12 +72,14 @@ function App() {
             <ToastContainer></ToastContainer>
             <SearchForm getCityName={handleCityName} />
             <LocalHour />
-            {loadedData ?
+            {isError && notify}
+            {loadedData && !isError ?
               <div>
                 <CityHeader header={weatherApiData.name} showStat={loadedData} />
-                <WeatherStatus main={weatherApiData.main.temp + " °C"} currentDegree={weatherApiData.weather[0].description.toUpperCase()} img={weatherLogo} showStat={loadedData} />
+                <WeatherStatus main={weatherApiData.main.temp + " °C"} currentDegree={weatherApiData.weather[0].description.toUpperCase()} img={weatherLogo} 
+                showStat={loadedData} weatherAltInfoTemp={weatherApiData.main} visibility={weatherApiData.visibility} wind={weatherApiData.wind} />
               </div>
-              : cityName === '' ? null : <LoadingScreen /> }
+              : cityName === '' || isError ? null : <LoadingScreen /> }
           </div>
         </Zoom>
       </div>

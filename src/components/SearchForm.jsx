@@ -40,7 +40,7 @@ function SearchForm(props) {
         setInputVal(event.target.value);
     }
     function handleCoordClick(event){
-        navigator.geolocation.getCurrentPosition((position) => {props.getCoordinate({lat:position.coords.latitude,lon:position.coords.latitude})})
+        navigator.geolocation.getCurrentPosition((position) => {props.getCoordinate({lat:position.coords.latitude,lon:position.coords.longitude})})
         event.preventDefault();
     }
     function sendCityName(event) {

@@ -30,10 +30,13 @@ function App() {
     try {
       if(cityName)
       var weatherApiEndpoint = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName.toLowerCase() + ',tr&appid=' + apiKey + '&units=metric&lang=tr';
-      else
+      else if(coordinate)
       var weatherApiEndpoint = 'https://api.openweathermap.org/data/2.5/weather?lat=' + coordinate.lat + '&lon='+coordinate.lon+'&appid=' + apiKey + '&units=metric&lang=tr';
-      console.log(coordinate);
-      console.log(cityName);
+      else{
+        notify();
+        setIsError(true);
+        return PromiseRejectionEvent;
+      }
       setLoadedData(false); // Set loading before sending API request
       var response = await fetch(weatherApiEndpoint);
       var data = await response.json().then((result) => {

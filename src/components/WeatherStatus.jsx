@@ -61,11 +61,11 @@ function WeatherStatus(props) {
                 </Grid>
                 <Grid item xs={3}>
                     <CompressIcon color="primary" fontSize="large" />
-                    <p className="weather-alt-info">{props.weatherAltInfoTemp.pressure} PA</p>
+                    <p className="weather-alt-info">{props.weatherAltInfoTemp.pressure} hPA</p>
                 </Grid>
                 <Grid item xs={6}>
                     <WindPowerIcon color="primary" fontSize="large" />
-                    <p className="weather-alt-info">{props.wind.speed} km/h</p>
+                    <p className="weather-alt-info">{props.wind.speed} m/s</p>
                 </Grid>
                 <Grid item xs={6}>
                     <VisibilityIcon color="primary" fontSize="large" />

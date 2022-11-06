@@ -35,7 +35,6 @@ function App() {
           setWeatherLogo("http://openweathermap.org/img/wn/" + result.weather[0].icon + "@2x.png");
           setTimeout(() => setLoadedData(true), 1500);
           setIsError(false);
-          console.log(weatherApiData);
         } else {
           notify();
           setIsError(true);

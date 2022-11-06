@@ -20,13 +20,20 @@ function App() {
 
   const [loadedData, setLoadedData] = useState(false);
 
+  const [coordinate, setCoordinate] = useState();
+
   const [weatherLogo, setWeatherLogo] = useState("");
 
   const [isError, setIsError] = useState(false);
 
-  const getWeatherApiInfo = async (cityName) => {
+  const getWeatherApiInfo = async (cityName,coordinate) => {
     try {
+      if(cityName)
       var weatherApiEndpoint = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName.toLowerCase() + ',tr&appid=' + apiKey + '&units=metric&lang=tr';
+      else
+      var weatherApiEndpoint = 'https://api.openweathermap.org/data/2.5/weather?lat=' + coordinate.lat + '&lon='+coordinate.lon+'&appid=' + apiKey + '&units=metric&lang=tr';
+      console.log(coordinate);
+      console.log(cityName);
       setLoadedData(false); // Set loading before sending API request
       var response = await fetch(weatherApiEndpoint);
       var data = await response.json().then((result) => {
@@ -49,8 +56,14 @@ function App() {
 
   function handleCityName(name) {
     setCityName(name.toUpperCase());
-    getWeatherApiInfo(name);
+    getWeatherApiInfo(name,null);
   }
+
+  function handleCoordinate(coord) {
+    setCoordinate(coord);
+    getWeatherApiInfo(null,coord);
+    }
+
 
   var notify = () => toast.error('Hata Lütfen Bilgileri Kontrol Ediniz!', {
     position: "top-right",
@@ -69,7 +82,7 @@ function App() {
         <Zoom in={true} style={{ transitionDelay: '700ms' }} timeout={{ enter: 1000, exit: 1000 }}>
           <div className="main-content">
             <ToastContainer></ToastContainer>
-            <SearchForm getCityName={handleCityName} />
+            <SearchForm getCityName={handleCityName} getCoordinate={handleCoordinate}/>
             <LocalHour />
             {isError && notify}
             {loadedData && !isError ?

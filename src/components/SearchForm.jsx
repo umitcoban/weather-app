@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
 import Fab from '@mui/material/Fab';
 import SearchIcon from '@mui/icons-material/Search';
 import Fade from '@mui/material/Fade';
 import Zoom from '@mui/material/Zoom';
-
+import MyLocationIcon from '@mui/icons-material/MyLocation';
 
 const customStyle = {
     inputStyle: {
@@ -34,12 +34,16 @@ const customStyle = {
 function SearchForm(props) {
 
     const [inputVal, setInputVal] = useState("");
-    
-    
-    function handleChaneInput(event){
+
+
+    function handleChaneInput(event) {
         setInputVal(event.target.value);
     }
-    function sendCityName(event){
+    function handleCoordClick(event){
+        navigator.geolocation.getCurrentPosition((position) => {props.getCoordinate({lat:position.coords.latitude,lon:position.coords.latitude})})
+        event.preventDefault();
+    }
+    function sendCityName(event) {
         props.getCityName(inputVal);
         event.preventDefault();
     }
@@ -53,6 +57,9 @@ function SearchForm(props) {
                     <SearchIcon />
                 </Fab>
             </Fade>
+            <Fab type="button" onClick={handleCoordClick} color="primary" sx={customStyle.searchBtn} aria-label="edit">
+                <MyLocationIcon />
+            </Fab>
         </form>
     </div>
 }
